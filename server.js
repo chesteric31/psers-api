@@ -66,5 +66,5 @@ app.get('*', function(req, res) {
  * Start Express server.
  */
 app.listen( port, function(){
-  console.log("PWA API Server Listening on port ", port );
+  console.log("PSERS API Server Listening on port ", port );
 });

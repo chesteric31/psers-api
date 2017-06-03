@@ -9,7 +9,7 @@ module.exports = {
    * @return Void
    */
   welcome: function(req, res){
-    return res.status(200).json({ message: 'Welcome to the API that powers the push notifications for https://ril-pwa.firebaseapp.com'});
+    return res.status(200).json({ message: 'Welcome to the API that powers the push notifications for https://chesteric31.github.io/psers/'});
   },
 
   /**
