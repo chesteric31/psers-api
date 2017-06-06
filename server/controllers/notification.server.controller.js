@@ -19,7 +19,7 @@ module.exports = {
     // Prepare a message to be sent
     var message = new gcm.Message({
         notification: {
-          title: "Hi, new Update for PSERS",
+          title: "Hi, new update for PSERS",
           icon: "ic_launcher",
           body: "Click to see the latest episodes"
         }
