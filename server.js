@@ -12,11 +12,7 @@ var  express       = require('express'),
 
 var port = process.env.PORT || 3333;
 
-/**
- * Connect to MongoDB.
- */
 testdb.dbconnect();
-
 
 /**
  * Create Express server.

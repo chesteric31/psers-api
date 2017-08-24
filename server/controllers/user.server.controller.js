@@ -2,22 +2,10 @@
 
 module.exports = {
 
-  /**
-   * Welcome Notice
-   * @param  req
-   * @param  res
-   * @return Void
-   */
   welcome: function(req, res){
     return res.status(200).json({ message: 'Welcome to the API that powers the push notifications for https://chesteric31.github.io/psers/'});
   },
 
-  /**
-   * Register User with subscription ID
-   * @param  req
-   * @param  res
-   * @return json
-   */
   createNewUser: function(req, res){
     var user           = new User();
     user.user_id       = req.body.user_id;
@@ -31,13 +19,6 @@ module.exports = {
     });
   },
 
-  /**
-   * Delete A User
-   * @param  req
-   * @param  res
-   * @param  next
-   * @return json
-   */
   deleteOneUser: function(req, res, next){
     var userId   = req.params.user_id;
 

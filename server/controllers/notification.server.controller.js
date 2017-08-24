@@ -5,13 +5,6 @@
 
 module.exports = {
 
-
-  /**
-   * Send Notification to Users
-   * @param  req
-   * @param  res
-   * @return json
-   */
   notifyUsers: function(req, res){
 
     var sender = new gcm.Sender(secrets.fcm);
