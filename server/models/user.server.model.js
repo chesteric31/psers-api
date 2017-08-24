@@ -4,7 +4,7 @@ var mongoose          = require('mongoose'),
     	mongoose.Schema({
     						user_id:       { type: String, required: true, unique: true},
     						registered_on: { type: Date, default: Date.now },
-    						watching_shows_tvmaze_ids: [{ type: Integer }]
+    						watching_shows_tvmaze_ids: [{ type: Number }]
 		});
 
 module.exports = mongoose.model('User', userSchema, 'users');
