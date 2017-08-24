@@ -9,6 +9,7 @@ module.exports = {
   createNewUser: function(req, res){
     var user           = new User();
     user.user_id       = req.body.user_id;
+    user.watching_shows_tvmaze_ids = req.body.watching_shows_tvmaze_ids;
 
     user.save( function(err, users){
       if(err) {
