@@ -33,7 +33,7 @@ module.exports = {
       res.json({success: true, message: 'Delete Successful'});
       next();
     });
-  }
+  },
 
   getOneUser: function(req, res) {
     var userId = req.params.user_id;
