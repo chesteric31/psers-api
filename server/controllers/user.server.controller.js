@@ -6,7 +6,7 @@ module.exports = {
     return res.status(200).json({ message: 'Welcome to the API that powers the push notifications for https://chesteric31.github.io/psers/'});
   },
 
-  createNewUser: function(req, res){
+  createUser: function(req, res){
     var user           = new User();
     user.user_id       = req.body.user_id;
     user.watching_shows_tvmaze_ids = req.body.watching_shows_tvmaze_ids;
@@ -20,7 +20,7 @@ module.exports = {
     });
   },
 
-  deleteOneUser: function(req, res, next){
+  deleteUser: function(req, res, next){
     var userId   = req.params.user_id;
 
     console.log(userId);
@@ -35,7 +35,7 @@ module.exports = {
     });
   },
 
-  getOneUser: function(req, res) {
+  getUser: function(req, res) {
     var userId = req.params.user_id;
     User.findOne({user_id: userId}, function (error, user) {
       if (error) {
@@ -45,7 +45,7 @@ module.exports = {
     })
   },
 
-  getAllUsers: function(req, res) {
+  getUsers: function(req, res) {
     User.find({}, function (error, users) {
       if (error) {
         return res.status(404).json({success: false, message: "User is not found"});

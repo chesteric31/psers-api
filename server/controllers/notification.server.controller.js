@@ -37,5 +37,29 @@ module.exports = {
       });
     });
    
+  },
+
+  notifyUser: function(req, res) {
+    var show_title = req.body.show_title;
+
+    var message = new gcm.Message({
+        notification: {
+          title: "Hi, new update for " + show_title,
+          icon: "ic_launcher",
+          body: "Click to see the latest episode"
+        }
+    });
+
+    var userId = req.params.user_id;
+    
+    var sender = new gcm.Sender(secrets.fcm);
+    sender.send(message, { registrationTokens: user_id }, function (err, response) {
+      if (err) {
+          console.error(err);
+      } else {
+        return res.json(response);
+      } 
+    });
+   
   }
 };
