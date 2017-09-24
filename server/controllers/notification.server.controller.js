@@ -41,7 +41,7 @@ module.exports = {
 
   notifyUser: function(req, res) {
     var show_title = req.body.show_title;
-
+console.log(show_title);
     var message = new gcm.Message({
         notification: {
           title: "Hi, new update for " + show_title,
@@ -51,7 +51,7 @@ module.exports = {
     });
 
     var userId = req.params.user_id;
-    
+    console.log(req.params);
     var sender = new gcm.Sender(secrets.fcm);
     sender.send(message, { registrationTokens: user_id }, function (err, response) {
       if (err) {
