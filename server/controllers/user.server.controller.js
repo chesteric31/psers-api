@@ -44,4 +44,13 @@ module.exports = {
       return res.status(200).json({success: true, user: user});
     })
   }
+
+  getAllUsers: function(req, res) {
+    User.find({}, function (error, users) {
+      if (error) {
+        return res.status(404).json({success: false, message: "User is not found"});
+      }
+      return res.status(200).json({success: true, users: users});
+    })
+  }
 };
