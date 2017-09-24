@@ -51,7 +51,8 @@ console.log(show_title);
     });
 
     var userId = req.params.user_id;
-    console.log(req.params);
+    console.log("params: " + req.params);
+    console.log(req.params.user_id);
     var sender = new gcm.Sender(secrets.fcm);
     sender.send(message, { registrationTokens: user_id }, function (err, response) {
       if (err) {
