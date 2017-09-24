@@ -52,7 +52,7 @@ console.log(show_title);
 
     var userId = req.params.user_id;
     var sender = new gcm.Sender(secrets.fcm);
-    sender.send(message, { registrationTokens: ['userId'] }, function (err, response) {
+    sender.send(message, { registrationTokens: [userId] }, function (err, response) {
       if (err) {
           console.error(err);
       } else {
