@@ -42,7 +42,7 @@ module.exports = {
   notifyUser: function(req, res) {
     var show_title = req.body.show_title;
 console.log(show_title);
-    var message = new gcm.Message({
+    var currentMessage = new gcm.Message({
         notification: {
           title: "Hi, new update for " + show_title,
           icon: "ic_launcher",
@@ -52,7 +52,7 @@ console.log(show_title);
 
     var userId = req.params.user_id;
     var sender = new gcm.Sender(secrets.fcm);
-    sender.send(message, { registrationTokens: [userId] }, function (err, response) {
+    sender.send(currentMessage, { registrationTokens: [userId] }, function (err, response) {
       if (err) {
           console.error(err);
       } else {
