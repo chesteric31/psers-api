@@ -43,7 +43,7 @@ module.exports = {
       }
       return res.status(200).json({success: true, user: user});
     })
-  }
+  },
 
   getAllUsers: function(req, res) {
     User.find({}, function (error, users) {
