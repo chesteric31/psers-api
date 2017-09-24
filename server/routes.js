@@ -11,5 +11,5 @@ module.exports = function(app) {
   app.delete('/api/user/:user_id', 	User.deleteUser);
 
   app.post('/api/notify', Notification.notifyUsers);
-  app.post('/api/notify/:user_id', Notification.notifyOneUser);
+  app.post('/api/notify/:user_id', Notification.notifyUser);
 };
