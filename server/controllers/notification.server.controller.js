@@ -41,7 +41,9 @@ module.exports = {
 
   notifyUser: function(req, res) {
     var show_title = req.body.show_title;
-console.log(show_title);
+
+    console.log(show_title);
+    
     var currentMessage = new gcm.Message({
         notification: {
           title: "Hi, new update for " + show_title,
