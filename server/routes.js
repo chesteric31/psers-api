@@ -3,13 +3,13 @@ var User          = require('./controllers/user.server.controller'),
 
 module.exports = function(app) {
 
-  app.get('/api',  User.welcome);
+  app.get('/api',  							User.welcome);
 
-  app.get('/api/user/:user_id',		User.getUser);
-  app.get('/api/users',				User.getUsers);
-  app.post('/api/users',           	User.createUser);
-  app.delete('/api/user/:user_id', 	User.deleteUser);
+  app.get('/api/user/:user_id',				User.getUser);
+  app.get('/api/users',						User.getUsers);
+  app.post('/api/users',           			User.createUser);
+  app.delete('/api/user/:user_id', 			User.deleteUser);
 
-  app.post('/api/notify', Notification.notifyUsers);
-  app.post('/api/user/:user_id/notify', Notification.notifyUser);
+  app.post('/api/notify', 					Notification.notifyUsers);
+  app.post('/api/user/:user_id/notify', 	Notification.notifyUser);
 };
