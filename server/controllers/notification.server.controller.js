@@ -53,6 +53,8 @@ module.exports = {
           data: { show_title: show_title }
     });
 
+    console.log(currentMessage);
+
     var userId = req.params.user_id;
     var sender = new gcm.Sender(secrets.fcm);
     sender.send(currentMessage, { registrationTokens: [userId] }, function (err, response) {
