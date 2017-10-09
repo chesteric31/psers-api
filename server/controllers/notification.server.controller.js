@@ -51,7 +51,6 @@ module.exports = {
           body: "Click to see the latest episode"
         }*/
           data: { show_title: show_title }
-        }
     });
 
     var userId = req.params.user_id;
