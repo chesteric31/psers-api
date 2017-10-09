@@ -43,10 +43,12 @@ module.exports = {
     var show_title = req.body.show_title;
 console.log(show_title);
     var currentMessage = new gcm.Message({
-        notification: {
+        /*notification: {
           title: "Hi, new update for " + show_title,
           icon: "ic_launcher",
           body: "Click to see the latest episode"
+        }*/
+          data: { show_title: show_title }
         }
     });
 
