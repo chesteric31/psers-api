@@ -8,11 +8,12 @@ module.exports = {
   notifyUsers: function(req, res){
 
     var sender = new gcm.Sender(secrets.fcm);
+    var show_title = "Star trek";
 
     // Prepare a message to be sent
     var message = new gcm.Message({
         notification: {
-          title: "Hi, new update for PSERS",
+          title: "Hi, new update for " + show_title,
           icon: "ic_launcher",
           body: "Click to see the latest episodes"
         }
