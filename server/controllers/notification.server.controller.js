@@ -46,7 +46,7 @@ module.exports = {
     console.log("show title: " + show_title);
     
     var currentMessage = new gcm.Message({
-          "notification": {
+          "data": {
             title: "Hi, new update for " + show_title,
             icon: "ic_launcher",
             body: "Click to see the latest episode"
