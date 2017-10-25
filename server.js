@@ -8,7 +8,17 @@ var  express       = require('express'),
      cors          = require('cors'),
      secrets       = require('./config/secrets'),
      testdb        = require('./config/testdb'),
-     route         = require('./server/routes');
+     route         = require('./server/routes'),
+     webPush       = require('web-push');
+
+/**
+ * Set API key
+ */
+webPush.setVapidDetails(
+  'mailto:chesteric31@gmail.com',
+  process.env.VAPID_PUBLIC_KEY, 
+  process.env.VAPID_PRIVATE_KEY
+);
 
 var port = process.env.PORT || 3333;
 
