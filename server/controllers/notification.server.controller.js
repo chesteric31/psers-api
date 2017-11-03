@@ -12,7 +12,6 @@ module.exports = {
     var show_title = "Star trek";
     User.find({}, function(err, users) {
         users.forEach(function(user) {
-            console.log("user", user);
             webPush.sendNotification({
               endpoint: user.endpoint,
               TTL: 1,
@@ -40,6 +39,7 @@ module.exports = {
       if (error) {
         return res.status(404).json({success: false, message: "User is not found"});
       }
+      console.log("user", user);
       webPush.sendNotification({
           endpoint: user.endpoint,
           TTL: 1,
