@@ -10,6 +10,9 @@ module.exports = {
     var user           = new User();
     user.user_id       = req.body.user_id;
     user.watching_shows_tvmaze_ids = req.body.watching_shows_tvmaze_ids;
+    user.endpoint      = req.body.endpoint;
+    user.key           = req.body.key;
+    user.authSecret    = req.body.authSecret;
 
     user.save( function(err, users){
       if(err) {
