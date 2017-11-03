@@ -34,27 +34,27 @@ module.exports = {
 
   notifyUser: function(req, res) {
     var show_title = req.body.show_title;
-
-    console.log("show title: " + show_title);
-    
-    var currentMessage = new gcm.Message({
-          "data": {
-            title: "Hi, new update for " + show_title,
-            icon: "ic_launcher",
-            body: "Click to see the latest episode"
-          }
-    });
-
-    console.log(currentMessage);
-
     var userId = req.params.user_id;
-    var sender = new gcm.Sender(secrets.fcm);
-    sender.send(currentMessage, { registrationTokens: [userId] }, function (err, response) {
-      if (err) {
-          console.error(err);
-      } else {
-        return res.json(response);
-      } 
+
+    User.findOne({userId: userId}, function (error, user) {
+      if (error) {
+        return res.status(404).json({success: false, message: "User is not found"});
+      }
+      webPush.sendNotification({
+          endpoint: user.endpoint,
+          TTL: 1,
+          keys: {
+            p256dh: user.key,
+            auth: user.authSecret
+          }
+        }, show_title)
+        .then(function() {
+          return res.sendStatus(201);
+        })
+        .catch(function(error) {
+          console.log(error);
+          return res.sendStatus(500);
+        });
     });
    
   }
