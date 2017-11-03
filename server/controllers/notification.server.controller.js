@@ -35,7 +35,7 @@ module.exports = {
     var show_title = req.body.show_title;
     var userId = req.params.user_id;
 
-    User.findOne({userId: userId}, function (error, user) {
+    User.findOne({user_id: userId}, function (error, user) {
       if (error) {
         return res.status(404).json({success: false, message: "User is not found"});
       }
