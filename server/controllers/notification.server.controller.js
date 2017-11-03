@@ -11,8 +11,8 @@ module.exports = {
   notifyUsers: function(req, res) {
     var show_title = "Star trek";
     User.find({}, function(err, users) {
-        for (var user in users) {
-        console.log("user", user);
+        users.forEach(function(user) {
+            console.log("user", user);
             webPush.sendNotification({
               endpoint: user.endpoint,
               TTL: 1,
