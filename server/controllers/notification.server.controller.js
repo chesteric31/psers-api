@@ -1,7 +1,10 @@
  var User       = require('../models/user.server.model'),
     _           = require('lodash'),
     gcm         = require('node-gcm'),
-    secrets     = require('../../config/secrets');
+    secrets     = require('../../config/secrets'),
+    webPush     = require('web-push');
+
+webPush.setGCMAPIKey(secrets.fcm);
 
 module.exports = {
 
@@ -29,13 +32,31 @@ module.exports = {
       console.log(sender);
 
       // Actually send the message
-      sender.send(message, { registrationTokens: user_ids }, function (err, response) {
+      /*sender.send(message, { registrationTokens: user_ids }, function (err, response) {
         if (err) {
             console.error(err);
         } else {
           return res.json(response);
         } 
-      });
+      });*/
+      setTimeout(function() {
+            webPush.sendNotification({
+              endpoint: req.body.endpoint,
+              TTL: req.body.ttl,
+              keys: {
+                p256dh: req.body.key,
+                auth: req.body.authSecret
+              }
+            }, req.body.payload)
+            .then(function() {
+              res.sendStatus(201);
+            })
+            .catch(function(error) {
+              console.log(error);
+              res.sendStatus(500);
+            });
+          }, req.body.delay * 1000);
+        });
     });
    
   },
